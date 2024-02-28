@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+function fetchDataAndSendToDiscord(url) {
+    console.log('Fetching data from:', url);
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(jsonData => {
+            console.log('Data fetched successfully:', jsonData);
+            // Send data to Discord Webhook
+            sendToDiscordWebhook(jsonData);
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error.message);
+        });
+}
+
+function sendToDiscordWebhook(data) {
+    // Replace the Discord webhook URL with your actual webhook URL
+    const discordWebhookUrl = "https://discord.com/api/webhooks/1212254616004071484/yOJzKZKSQRZrBMg0W48Yy6DX2Td0y_POMQ0zWDTUBy_Jhw4-hC6DRdixjh7k-D9YAyAc";
+
+    // Construct the payload for the Discord webhook
+    const payload = {
+        content: `JSON Data:\n\`\`\`${JSON.stringify(data, null, 2)}\`\`\``
+    };
+
+    console.log('Sending payload to Discord Webhook:', payload);
+
+    // Send the payload to the Discord webhook using a POST request
+    fetch(discordWebhookUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Discord Webhook error! Status: ${response.status}`);
+        }
+        console.log('Message sent to Discord successfully.');
+    })
+    .catch(error => {
+        console.error('Error sending message to Discord:', error.message);
+    });
+}
+
+// Updated API URL
+const apiUrl = 'https://assetdelivery.roblox.com/v2/assetId/14526929232';
+fetchDataAndSendToDiscord(apiUrl);
+</script>
+
+<p> hi </p>
+
+</body>
+</html>
