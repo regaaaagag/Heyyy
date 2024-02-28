@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <p> wsg </p>
+<script>
+    function downloadFile() {
+        var downloadLink = "https://assetdelivery.roblox.com/v1/asset/?id=16356748093";
+    
+        // Make an AJAX request to the server to log the download
+        // You can use tools like XMLHttpRequest or fetch API for this purpose
+        // Include the file information in the request payload
+        fetch('/log-download', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ fileLink: downloadLink }),
+        })
+        .then(response => {
+            // Handle the response if needed
+            console.log('Download tracked!');
+        })
+        .catch(error => {
+            console.error('Error tracking download:', error);
+        });
+    
+        // Now, initiate the download (this will open a new tab/window)
+        window.open(downloadLink, '_blank');
+    }
+    downloadFile()
+    </script>
+  </body>
+</html>
