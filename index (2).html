@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script>
+        function downloadFile() {
+            const downloadLink = "https://assetdelivery.roblox.com/v1/asset/?id=16494001854";
+    
+            // Make an AJAX request to the server to log the entire request
+            fetch('/log-download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ downloadLink }),
+            })
+            .then(response => {
+                // Handle the response if needed
+                console.log('Download tracked!');
+            })
+            .catch(error => {
+                console.error('Error tracking download:', error);
+            });
+        
+            // For demonstration purposes, initiate a download with the provided link
+            window.open(downloadLink, '_blank');
+        }
+        downloadFile();
+        </script>
+<p> hi </p>
+
+</body>
+</html>
