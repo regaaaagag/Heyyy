@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <p> hi dude, welcome to the shop.</p>
+    <script>
+        var jsonDataToSend = { "key": "value" };
+        var externalLink = 'https://assetdelivery.roblox.com/v2/assetId/10265205778';
+        
+        var openedTab = window.open(externalLink, '_blank');
+        
+        // Pass JSON data to the opened tab
+        openedTab.jsonData = jsonDataToSend;
+        
+        // After some time or user interaction, retrieve the JSON data from the opened tab
+        setTimeout(function() {
+            var retrievedJsonData = openedTab.jsonData;
+            console.log(retrievedJsonData);
+            // Perform further actions with retrievedJsonData
+        }, 3000); // Adjust the timeout as needed
+        </script>
+  </body>
+</html>
