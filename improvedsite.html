@@ -9,17 +9,21 @@
         var externalLink = 'https://assetdelivery.roblox.com/v2/assetId/10265205778';
         
         var openedTab = window.open(externalLink, '_blank',"noopener,noreferrer");
-
-
       if (openedTab) {
-  // Add an event listener for the 'load' event
   openedTab.addEventListener('load', function () {
+    newWindowOpened = true;
+    
     // Access the content of the new window and trigger the print functionality
+    try {
+      console.log(openedTab.document.body.innerHTML);
+    } catch (error) {
+      console.error("Error accessing content:", error.message);
+    }
+
     openedTab.print();
   });
-} else {
-  console.error("Failed to open the new window.");
 }
+
         //console.log(openedTab.document.body.textContent);
         // Pass JSON data to the opened tab
         // openedTab.JSON = jsonDataToSend;
