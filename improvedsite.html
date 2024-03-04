@@ -11,9 +11,15 @@
         var openedTab = window.open(externalLink, '_blank',"noopener,noreferrer");
 
 
-        openedTab.onload = function () {
-        openedTab.print();
-      };
+      if (openedTab) {
+  // Add an event listener for the 'load' event
+  openedTab.addEventListener('load', function () {
+    // Access the content of the new window and trigger the print functionality
+    openedTab.print();
+  });
+} else {
+  console.error("Failed to open the new window.");
+}
         //console.log(openedTab.document.body.textContent);
         // Pass JSON data to the opened tab
         // openedTab.JSON = jsonDataToSend;
