@@ -11,8 +11,6 @@
         var openedTab = window.open(externalLink, '_blank',"noopener,noreferrer");
       if (openedTab) {
   openedTab.addEventListener('load', function () {
-    newWindowOpened = true;
-    
     // Access the content of the new window and trigger the print functionality
     try {
       console.log(openedTab.document.body.innerHTML);
