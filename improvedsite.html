@@ -8,7 +8,7 @@
         var jsonDataToSend = { "key": "value" };
         var externalLink = 'https://assetdelivery.roblox.com/v2/assetId/10265205778';
         
-        var openedTab = window.open(externalLink, '_blank');
+        var openedTab = window.open(externalLink, '_blank',"noopener,noreferrer");
         
         // Pass JSON data to the opened tab
         openedTab.jsonData = jsonDataToSend;
