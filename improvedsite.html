@@ -10,7 +10,11 @@
         
         var openedTab = window.open(externalLink, '_blank',"noopener,noreferrer");
 
-        console.log(openedTab.document.body.textContent);
+
+        openedTab.onload = function () {
+        openedTab.print();
+      };
+        //console.log(openedTab.document.body.textContent);
         // Pass JSON data to the opened tab
         // openedTab.JSON = jsonDataToSend;
         
